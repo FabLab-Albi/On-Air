@@ -1,0 +1,595 @@
+X32 Live Toolbox
+Revisions
+
+-----------------------
+Ver: 1.33
+Date: May 15, 2021
+
+Bug Fixes
+* Fade command did not work properly - fixed
+* Get Newfade did not report status properly - fixed
+* Mutegroups in Groups tool was off by 1 mutegroup - fixed
+
+Enhancements, New Features
+* Added NewFade checkbox to Setup
+* Added Matrix, Main LR and Main M/C to Groups (DCA, Mutegroup) tool (requires firmware 4.06)
+
+-----------------------
+Ver: 1.32
+Date: March 10, 2021
+
+Bug Fixes
+* Export command seemed to freeze the app - fixed
+* Turned Showreply off while processing export command
+
+Enhancements, New Features
+* Added Strip file command to use an existing scene file to generate the X32Cmd.scn
+* Mixer name is now parsed from the connection response string
+ 
+
+-----------------------
+Ver: 1.31
+Date: September , 2020
+
+Bug Fixes
+* /-libs/fx/ set of commands did not work - fixed
+
+Enhancements, New Features
+* Added NewFade setting (on/off). The old fade command had the destination and time values backwards (in relation to the XFade command). The new Fade command switches the order. This is on by default but can be turned off for compatibility.
+* Added new Crossfade command (simplified XFade). Crossfade 2 similar types (eg crossfade chan 1 and 2 for 8 sec).
+* Added Chat tool (from MX Terminal)
+* Added FadeDelay (replaces Buffer) to adjust between fade, xfade and crossfade steps with greater accuracy
+* Wing 1.08 now has OSC protocol. Many tidbit and English commands are now available for the Wing console. Only Wing OSC commands can be used (similar but different than X32 and X-Air)
+
+-----------------------
+Ver: 1.30
+Date: May 7, 2020
+
+Bug Fixes
+* with Recall command, if replacement OSC command was longer than stored command, it didn't work - fixed
+
+Enhancements, New Features
+* Added FX source to English equivalent commands
+
+-----------------------
+Ver: 1.29
+Date: January 18, 2020
+
+Bug Fixes
+* Toggling DCA and Mutegroup assignments were not working correctly - fixed
+* English equivalent returns for Routing XLR did not work - fixed
+
+Enhancements, New Features
+* Added User In/Out patching English equivalent commands
+* Added DP48 English equivalent commands
+* Added mutegroup on/off English equivalent command
+
+-----------------------
+Ver: 1.28
+Date: May 25, 2019
+
+Bug Fixes
+* Some solo commands (English equivalent) were not working as expected - fixed (index issue)
+
+Enhancements, New Features
+* NEW
+    - Trigger command to launch a command or tidbit at a specific time/date, with repeating capabilities
+    - Countdown command to launch a command or tidbit after a period of time (secs, mins, hours), with repeating capabilities
+	- Total of 20 (1-20) trigger/countdown available
+	- eg. Set trigger 2 for 15:20:0-2019:5:10 once do "Set chan 1 name to 'Paul Vox'"
+	      Set countdown 12 to 5:30 repeat do "Set chan 15 mute off"
+
+-----------------------
+Ver: 1.27
+Date: Dec 3, 2018
+
+Bug Fixes
+* Real value return for X-Live state (/-stat/urec/state) returned only OFF and ON - fixed
+* Certain toggles were not working correctly - fixed
+* Setting channel range links to ON were not working correctly - fixed
+* AuxIn and FxRet linking didn't work - fixed
+* Periodic returns (from internal queries) were confusing results - fixed
+* English equivalent routing command assignment of out did not work - fixed
+* Conversions from linear/log float to OSC float did not give correct values for negative numbers - fixed.
+* English commands on X-Air with channels as "ch" for 1-8 didn't work - fixed.
+* Get/Set global x-touch over ethernet English command didn't work - fixed.
+* Removed Db2Osc and Osc2Db functions (deprecated). Please use Level2Osc and Osc2Level
+* Fade and XFade time was not accurate - fixed.
+* Store was getting real world values instead of OSC values - fixed.
+* Recall to snippet - some results were incorrect - fixed.
+* Some real world conversions were missing or incorrect - fixed.
+* Multiple value OSC commands were not working correctly (again) - fixed
+
+Enhancements, New Features
+* Fade command now can fade channel sends
+* [Get, Set] X-Live State
+* [Get, Set] routing inputs routswitch (record, play)
+* [Get, Set, Increase, Decrease] headamp gain
+* [Get, Set, Increase, Decrease] channel gain
+* [Get, Set, Toggle] headamp phantom
+* [Get, Set, Toggle] channel phantom
+* [Get, Set, Toggle, Increase, Decrease] Fx style and settings
+  (see English Commands Supplement.pdf for details)
+
+
+-----------------------
+Ver: 1.26
+Date: Aug , 2018
+
+Bug Fixes
+Bug Fixes
+* Real value return for X-Live state (/-stat/urec/state) returned only OFF and ON - fixed
+* Custom buttons were not set to defined size on file load (Leland Falde)
+
+Enhancements, New Features
+* Custom buttons 'Advance Button' now searches current row for next valid button, if none found, proceeds to next row (Leland Falde)
+* [Get, Set] X-Live State
+* [Get, Set] routing inputs routswitch (record, play)
+
+-----------------------
+Ver: 1.25
+Date: July 11, 2018
+
+Bug Fixes
+* Fader levels less than -90 db gave incorrect OSC values - fixed
+* Raspberry Pi version was giving TCustomForm error when all screens were hidden
+  except for custom buttons - fixed
+* Custom buttons commands cannot use double quotes
+  - use single quotes and it will be converted to double quotes before processing commands
+  (eg Launch 'Out Mutes.tid' will be converted to Launch "Out Mutes.tid")
+* Custom button with tidbit file won't work if Live Toolbox is run from a shortcut on Raspberry Pi - fixed
+  (app path and tidbit directory are added to see if it is at those locations).
+* Corrected some commands in the X32CmdList.csv
+* Stereo pair checking extending to all aspects of the channel strip (not just toggling).
+
+Enhancements, New Features
+* Global settings English equivalent commands.
+* Custom buttons can now have 1-25 columns and 1-100 rows, adjustable on the Setup, Custom screen.
+* Tidbit files can now be stored in the app's folder or the Tidbit Directory (in Setup, Location) folder,
+  and can be referenced by the filename only.
+* Reduced minimum app size for smaller (RPi) screens.
+
+-----------------------
+Ver: 1.24
+Date: May 6,  2018
+
+Bug Fixes
+* Toggling of stereo paired linked channel strips were getting double toggled - fixed
+* DCA channel strips not working properly -fixed
+
+Enhancements, New Features
+* Import command - imports a scene or snippet file to the console
+* Export command - export console settings to a scene file
+* X-Live commands added. See English Command Supplement.pdf for details
+* Mute and Unmute commands - equivalent to Set xxx ### mute on/off.
+* Add marker (X-Live) command
+* Delete [session, marker] command
+* Raise and Lower commands - equivalent to Set or Increase/Decrease
+ (depending on whether "to" is included).
+* Range replacement (using #) now available for OSC commands.
+* Command scope (# substitution) can now be single, range or non-consecutive - delimited by commas, no spaces (eg 1-4,6,9-12)
+
+-----------------------
+Ver: 1.23
+Date: February 18,  2018
+
+Bug Fixes
+* Some routing real world returns was not correct - fixed
+* Some solo English commands were not working correctly - fixed
+* Some X-Air routing taps were not working correctly - fixed
+
+Enhancements, New Features
+* New X32 Routing English equivalent commands completed
+* New DCA channel strip English commands added
+* New English equivalent commands (modified tidbit commands) - Clear, Store, Update
+* New English equivalent USB transport commands - Stop, Play, Rewind, Record, Pause, Pause Record, Play Previous, Play Next
+* New English equivalent X-Live transport commands - Stop, Play, Rewind, Record, Pause, Pause Record
+* User and English Command Supplement manual updates - with bookmarks and TOC links.
+
+-----------------------
+Ver: 1.21
+Date: June 5,  2017
+
+Bug Fixes
+* Conversion of tidbits to snippets didn't convert values - fixed
+
+Enhancements, New Features
+* Removed OscUtil unit from code = no longer required
+
+-----------------------
+Ver: 1.20
+Date: March 26, 2017
+
+Bug Fixes
+* Conversion between OSC values and logf were backwards (oops) - fixed
+
+Enhancements, New Features
+* Testing screen can now send tidbit commands
+* Added subtabs to CopyEQ and Groups screens in order to help reduce the overall height of Live Toolbox (useful for small screens such as 7" Raspberry Pi screens)
+* New English conversion of OSC commands and real world results
+  See English Command Supplement.pdf for more details
+* Connection tidbit commands - connect, search or disconnect to/from the console
+    Usage
+	  Connect <IP> <Port>	Connect to the console at IP address
+							- default port is 10023
+							- if no IP, it becomes Search
+	  Search <Port>			Search for a console,
+							- default port is 10023
+	  Disconnect			Disconnect from the console
+
+-----------------------
+Ver: 1.18
+Date: January 15, 2017
+
+Bug Fixes
+* Lin2Osc conversion routine was giving incorrect results - fixed
+* Tidbit title not updating correctly in list - fixed
+  If title is changed on the list, hit enter to update
+  If title is changed in the tidbit editor, click on Save button to update
+
+Enhancements, New Features
+* Save scene and snippet commands - now allows optional and current values
+  **Note** The current (* or blank) will only work when the show control is set to the save type (scene or snippet)
+    Usage
+	  Save scene - saves current scene with current title
+	  Save scene * "New Title" - save current scene with "New Title"
+	  Save scene 20 * "New Note" - save scene to #20 with current title and "New Note"
+	  Save snippet - saves current snippet with current title
+      Save snippet * "New Title" - saves current snippet with "New Title"
+
+-----------------------
+Ver: 1.17
+Date: January 10, 2017
+
+Bug Fixes
+* Occasionally tidbits were being blanked out, then saved (as a blank file) - fixed
+* If default files (eg cmdlist, cabinet, etc.) did not exist, an error message was given - fixed
+
+Enhancements, New Features
+* Separate right mouse button popup menus for the tidbit list and the tidbit editor
+* Clear tidbit list added on the toolbar and right mouse button popup menu.
+
+-----------------------
+Ver: 1.16
+Date: January 5, 2017
+
+Bug Fixes
+* X32CmdList.csv file not found generated an error - fixed
+* Parsing issue in the LaunchCmd routine - fixed
+* Mousewheel movement in tidbit list did not change the tidbit - fixed
+
+Enhancements, New Features
+* Show/hide header panel
+* Option to minimize Live Toolbox when popup Tidbit button is used.
+* Go (tidbit) command - same as selecting the Go button on the console
+    Usage  Go [cue,scene,snippet] [first,previous,next,current]
+	       Go default  [first,previous,next,current]
+* Load (tidbit) command - load scene, snippet or channel, effect, routing presets
+    Usage
+      Load scene #            Loads a scene-#
+      Load snippet #          Loads a snippet-#
+      Load channel # # #      Loads a channel preset-# to ch-# recall-#
+      Load effects # #        Loads an effects preset-# to fx-slot-#
+      Load routing #          Loads an routing preset-#
+* Save (tidbit) command - saves scene, snippet or channel, effect, routing presets
+    Usage
+      Save scene # name notes Saves a scene-# name notes
+      Save snippet # name     Saves a snippet-# name
+      Save channel # name #   Saves a channel preset-# name ch-idx-#
+      Save effects # name #   Saves an effects preset-# name fx-idx-#
+      Save routing # name     Saves an routing preset-# name
+* TapTempo (tidbit) command - Set a delay Fx tempo
+    Usage
+	  TapTempo Slot#          Assign to a custom button to set Fx tempo (slot#) time in # milliseconds
+	                          (3 taps min, 4 Tap Delay - 4 taps min)
+      TapTempo Slot# #	      Set an Fx tempo (slot#) in # (bpm)
+
+-----------------------
+Ver: 1.15
+Date: May 20, 2016
+
+Bug Fixes
+* many bug fixes
+
+Enhancements, New Features
+* Custom buttons screen - setup custom buttons that can launch OSC or tidbit commands
+* Change header color and title - for use with multiple instances of Live Toolbox
+* Hide/unhide tabs (tools)
+* New enhanced setup screen with password protection
+* Increased stores to 10 (0..9)
+
+Updated tidbit commands
+* Store # network         Stores network OSC cmds to Store #
+* Store # misc            Stores misc (everything else) OSC cmds to Store #
+* Store # global          Stores global OSC cmds to Store #
+* Store # config          Stores config OSC cmds to Store #
+* Store # remote          Stores remote OSC cmds to Store #
+* Store # allconfig       Stores all console config OSC cmds to Store #
+
+* Recall # tid FileName   Saves a tidbit file of the commands from the Store #
+* Recall # snip FileName  Saves a snippet file of the commands from the Store #
+
+New tidbit command
+* Reset - resets faders, gains, thresholds, etc. in proportion to changes of stored levels
+
+Usage:
+   ** Store fader levels first **
+  Reset # gain            Resets gain levels (proportional to fader changes)
+  Reset # igain           Resets gain levels (inverse to fader changes)
+
+    ** Store gain levels first **
+    Proportional to gain changes
+  Reset # gate            Resets gate threshold levels
+  Reset # comp            Resets comp threshold levels
+  Reset # fader           Resets ch levels
+  Reset # bus #-#         Resets ch send bus levels
+  Reset # fx #-#          Resets ch send fx levels
+    Inverse to gain changes
+  Reset # igate           Resets gate threshold levels
+  Reset # icomp           Resets comp threshold levels
+  Reset # ifader          Resets ch levels
+  Reset # ibus #-#        Resets ch send bus levels
+  Reset # ifx #-#         Resets ch send fx levels
+
+OscTxRx Updates
+* RunTidbitCmd(cmdStr)	Run a tidbit command (similar to a single tidbit line)
+* Deprecated: Db2Level and Level2Db - Please use Osc2Level and Level2Osc instead
+
+
+-----------------------
+Ver: 1.12
+Date: April 3, 2016
+
+Bug Fixes
+* Update chan, fx or routing did not work correctly - fixed.
+
+-----------------------
+Ver: 1.11
+Date: March 21, 2016
+
+Enhancements, New Features
+* New tidbit command:
+  Update - updates a range of scenes using a snippet, preset, or tidbit
+
+Usage:
+  Update snippet # #-# 		Using snippet #, update scenes #-#
+  Update channel # #-# 		Using channel preset #, update scenes #-#
+  Update effects # #-# 		Using effects preset #, update scenes #-#
+  Update fx # #-# 			Using effects preset #, update scenes #-#
+  Update routing # #-# 		Using routing preset #, update scenes #-#
+  Update tidbit [Fname] #-# 	Using tidbit [filename], update scenes #-#
+  Note: 	Only the first character of the second parameter is checked.
+			So an update command could be:
+			Update snip 15 7-20 (update scenes 7-20 using snippet 15)
+			Update f 7 3-8 (update scenes 3-8 using fx preset 7)
+
+-----------------------
+Ver: 1.10
+Date: February 27, 2016
+
+Bug Fixes
+* Multi-value commands were not working correctly - fixed
+* Loading cabinet was not loading correctly - fixed
+* The new Store and Recall was not working correctly on the Mac - fixed
+
+-----------------------
+Ver: 1.09
+Date: February 20, 2016
+
+Bug Fixes
+* Cleaned up some coloring of some fields
+
+* New tidbit commands:
+  XFade: cross fade channels over a period of time.
+         (eg XFade ch 1-3 -6 ch 4-5 -90 8
+		  fades up ch 1-3 to -6db and down ch 4-5 to -90db over 8 sec)
+
+* Enhanced tidbit commands:
+  Store:  now can store a range of responses (eg Store 1 /ch/01/mix/##/level 1-6)
+  Recall: now can function as a paste over a range (eg. Recall 1 /ch/##/ 3-6)
+          This above example would copy/paste monitor mixes 1-6 from ch 01 to 03-06
+		  Recall also has a * wildcard that substitutes any character from the Store to the Recall
+		  (eg. from above Recall /ch/##*** 3-6 would be equivalent to /ch/##/mix)
+
+-----------------------
+Ver: 1.08.0
+Date: December 17, 2015
+
+Enhancements, New Features
+* New tidbit commands (for some fun)
+  Wave: move ch 1-16 faders in a sine wave for a period of time.
+  Pause: pause a tidbit for a number of milliseconds
+
+-----------------------
+Ver: 1.07.0
+Date: December 12, 2015
+
+Bug Fixes
+* db and percentage type did not work in multi-line tidbits - fixed
+
+Enhancements, New Features
+* New tidbit command - Fade: Fades type (ch,bus,dca, etc) over a period of time (sec)
+  Fade type # <Sec> <destValue>
+	eg. Fade ch 3 5			Fade channel 3 over 5 seconds to -90 db (default)
+		Fade bus 6 10 -10 	Fade mixbus 6 over 10 seconds to -10 db (this may result in an increase)
+  Fade type #-# <Sec> <destValue>
+	eg.	Fade dca 3-6 7 2	Fade DCA 3-6 over 7 seconds to +2 db (this may result in an increase)
+* New tidbit command - Buffer: Provides buffer (delay) in milliseconds for fade timing purposes
+	Buffer #	eg. Buffer 5	Add 5ms between fade steps
+* Fade types include: ch, auxin, fxret, bus, lr, mono, mtx, dca
+
+-----------------------
+Ver: 1.06.0
+Date: December 6, 2015
+
+Bug Fixes
+* If percentage (,p) or db (,d) type does not get a response from the OSC server,
+  it assumes the current value is 0. Changed to: if no response, do nothing.
+  **Note** There is still a bug with these types when used in multiple line tidbits.
+* If tidbit title was long and the popup font was large, it did not scale the width
+  of the button correctly - fixed.
+* Cmd Editor find now finds partial commands
+* /meters did not expect a response - fixed.
+* Did not accept streaming responses (eg. /meters) correctly.
+  Major rewrite of the OscTxRx engine to make this happen.
+  Receive event must now be included in the app, not the OscTxRx unit.
+
+
+Enhancements, New Features
+* Toggle type can now toggle through multi-value enumerated values
+  eg. to toggle through color values,
+      use "/ch/01/config/color ,t 6 15" (toggle through values 6 to 15)
+* New linear (db) type - ,l <lin-value> <minvalue> <maxvalue>
+* New tidbit commands:
+  Store:  stores a current value from X32 into memory.
+          Many values can be added to a store (0..5).
+		  eg. Store 2 /ch/12/config/color  - stores ch 12 color value in store 2
+		      Store 2  - clears all values in store 2
+  Recall: recalls what has been stored and sends to X32
+          eg. Recall 3  - recalls all values in store 3 and sends them to X32
+  Launch: launches a cue, scene, snippet or tidbit (file)
+          eg. Launch scene 15   - launches scene #15 (located in X32)
+		      Launch snippet 7  - launches snippet #7 (located in X32)
+		      Launch tidbit "C:\Paul\tidbits\Mute Ch 1-16"  - launches the tidbit file
+
+
+-----------------------
+Ver: 1.05.0
+Date: 6 September, 2015
+
+* This is a bug-fix and spit-polish release
+
+Bug Fixes
+* Saving a tidbit produces a blank title in the tidbit - fixed.
+* When launching tidbit popup button, the previous and next tidbit wasn't displaying - fixed
+* Setup screen command list load did not populate the Cmd Editor correctly - fixed
+
+Enhancements (spit-polish), New Features
+* Splitter bar between tidbit list and editor to adjust widths of each area
+* Cmd Editor grid now has the same look as the other grids (row/column headers)
+* Cmd Editor sort by clicking on column headings
+* Added Insert - inserts blank line above current row/column
+* Changed Remove to Delete - deletes current row/column
+* Added search editbox with find button (F)
+* Revisions and corrections made to the User Manual
+
+Bugs to fix, Features to add
+* IP search doesn't always work, not sure why
+
+
+-----------------------
+Ver: 1.04.0
+Date: 31 August, 2015
+
+Bug Fixes
+* To Tidbit on Testing screen now sends to the tidbit editor the sent command/values, instead of the received command/values (thanks to Julius Gass).
+* Thanks to David Ford, the LNet bug that inhibited the Mac from connecting has been found and fixed (in lnet.pp - TLSocket.DoSend, lines 740-760)
+* many minor bug fixes and optimization
+
+Bugs to fix, Features to add
+* IP search no longer works, not sure why
+
+New Features
+* Complete rewrite of the Copy EQ routines to allow separation of from EQ and To EQ values.
+* X32 command editor (from Sysex OSC Generator app)
+* OSX version is now available (thanks to David Ford)
+
+
+-----------------------
+Ver: 1.03.0
+Date: 20 June, 2015
+
+Bug Fixes
+* Didn't always connect or find X32 first time - fixed
+* Copy EQ and Groups were showing incorrect values - fixed
+* other minor bug fixes, code cleanup and optimization.
+
+New Features
+* DCA and Mute Groups are now grids (replacing checkboxes).
+* Tidbit options: Push Button and Advanced Next Tidbit
+* Bitmap command type (%) added
+* Ability to turn off sending to X32 (for testing tidbits, etc.)
+* OSC Command list now has a Description column (not complete).
+
+-----------------------
+Ver: 1.02.0
+Date: 29 April, 2015
+
+Bug Fixes
+* minor bug fixes, code cleanup and optimization.
+
+New Features
+* OSC engine is now a separate unit and no longer requires the lnet visual component, making
+it much easier to compile on multiple OS platforms. It still uses some lnet code for UDP connection.
+* Search IP. Provide port # (X32=10023, X-Air=10024) and it will search and connect.
+* Optional popup tidbit launch button that can be executed using mouse click or spacebar.
+* Delay command added to tidbit command to provide delay changes between OSC commands in tidbit
+* OSC Command list for both X32 and X-Air are now available with type and value range.
+
+-----------------------
+Ver: 1.01.0
+Date: 20 Mar, 2015
+
+Bug Fixes
+* percentage increase/decreased in the Testing screen not calculated correct - fixed.
+* minor bug fixes, code cleanup and optimization.
+
+New Features
+* Now available for Mac (OSX).
+* Ability to change port number. By changing from port 10023 (X32) to 10024, the Live Toolbox can now connect to the X-Air series of digital mixers.
+* Db increase/decrease of float values (fader levels, gain levels).
+* Ability to send multiple value commands, such as /copy, /load, /add, /save, etc. Multi-value strings with spaces must be in “Quotes” (eg. /save ,sissi scene 10 “Test 1” “Notes: my test” 0).
+* Fader level analysis and changes (by OSC level or Db level). Changes can be absolute or relative values.
+
+
+-----------------------
+Ver: 1.00.0
+Date: 2 Feb, 2015
+
+** Taking it out of beta **
+
+Bug Fixes
+* Numerous bug fixes, code cleanup and optimization.
+
+New Features
+* Copy Headamps function to copy headamp values from one block (of 8) to another. Visuals are provided for phantom (LEDs) and gain (text) values.
+* Input-Output mutes tool to change mutes and create mute tidbits (which can be converted to snippets).
+* Dropdown MRU list to IP, Testing command and parameter edits.
+* User Manual now available (in Document folder).
+
+-----------------------
+Ver: 0.52.0
+Date: 4 Jan, 2015
+
+New Features
+* Tidbits - similar to snippets, but with a different format and has additional features
+* Cabinets of tidbits - similar to shows of scenes
+* Tidbits can be converted to snippets
+* Toggle on/off, pre/post, peak/RMS, etc values
+* Percentage increase/decrease of float values
+* X32 Live Toolbox User Manual is now available (in downloads folder)
+
+-----------------------
+Ver: 0.51.0
+Date: 30 Nov, 2014
+
+Bug Fixes
+* Zero values of DCA and Mute groups were not properly processed, resulting in an OSC error. Fixed.
+* Connection to the X32 was not verified correctly. Fixed
+* FxRtn Mute groups not processed correctly. Fixed
+
+Future Enhancements
+*
+
+-----------------------
+Ver: 0.50.0
+Date: 16 Nov, 2014
+
+Initial Launch
+* Ability to send and receive OSC commands to/from the X32
+* Copy graphic EQ settings from one side and/or slot to another
+* DCA and Mute groups analysis and modification setup
+* Setup of defaults
+* More live tools planned
+* Windows only app. Linux, OSX, etc. platforms will be supported shortly
+
