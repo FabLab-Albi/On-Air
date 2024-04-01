@@ -44,16 +44,8 @@
 //*******************************************************************************************************************
 // Parametres de connexion aux reseaux WiFi
 
-// Domicile
-//  #define WIFI_SSID  "Asus_DG"; // id de la connexion WiFi
-//  #define WIFI_PASSWORD "deshaiesgalinie";
-
-#define WIFI_SSID "devolo-30d32d310fc9"
-#define WIFI_PASSWORD "HRAMNGBUZOKAFWLG"
-
-// Radio Albiges
-// #define WIFI_SSID "Livebox-Albiges"
-// #define WIFI_PASSWORD "orange_albiges"
+// #define WIFI_SSID ""
+// #define WIFI_PASSWORD ""
 
 String ssid = WIFI_SSID;
 String password = WIFI_PASSWORD;
